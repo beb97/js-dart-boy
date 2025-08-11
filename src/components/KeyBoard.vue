@@ -17,36 +17,30 @@ const addThrow = (score: number) => {
 const setMult = (mult: number) => {
   activeMult.value = mult;
 }
-
-
-
 </script>
 
 <template>
-
   <div class="keyboard">
+    <div class="keys">
+<!--      <button class="key cancel" @click="addThrow(0)">C </button>-->
+      <button class="key" @click="addThrow(0)">0 </button>
+      <button class="key" @click="addThrow(25)">25 </button>
+      <button class="key" @click="addThrow(50)">50 </button>
+<!--      <button class="key ok" @click="addThrow(50)">OK </button>-->
+    </div>
+
     <div class="keys">
       <button @click="setMult(1)" class="simple" :class="{selected : (activeMult == 1)}">simple </button>
       <button @click="setMult(2)" class="double" :class="{selected : (activeMult == 2)}">double </button>
       <button @click="setMult(3)" class="triple" :class="{selected : (activeMult == 3)}">triple </button>
     </div>
 
-<!--    <div class="keys">-->
-<!--    </div>-->
+
     <div class="keys">
-<!--      <button class="key" @click="addThrow(0)">0 </button>-->
       <button class="key" v-for="n in keys" :key="n" @click="addThrow(n)">{{ n }} </button>
-<!--      <button class="key" @click="addThrow(25)">25 </button>-->
-    </div>
-    <div class="keys">
-      <button class="key" @click="addThrow(0)">0 </button>
-      <button class="key" @click="addThrow(25)">25 </button>
-      <button class="key" @click="addThrow(50)">50 </button>
     </div>
 
   </div>
-
-
 </template>
 
 <style scoped>
@@ -55,7 +49,11 @@ const setMult = (mult: number) => {
   display: flex;
   flex-direction: column;
   place-items: center;
-  row-gap: 1em;
+  row-gap: 0.5em;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: #adb9c6;
 }
 
 .keys {
@@ -70,14 +68,21 @@ const setMult = (mult: number) => {
 
 .key {
   width: 50px;
+  font-size: 1.3em;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid grey;
+  box-shadow: #1a1a1a 1px 1px 1px;
 }
 
 
+button {
+  border: 1px solid grey;
+}
+
 .selected {
-  border: 2px solid white;
+  border: 2px solid grey;
   opacity: 1 !important;
 }
 
@@ -94,4 +99,16 @@ const setMult = (mult: number) => {
   background-color: green;
   opacity: 0.5;
 }
+
+.cancel {
+  background-color: orange;
+  color: white;
+}
+
+.ok {
+  background-color: green;
+  color: white;
+}
+
+
 </style>

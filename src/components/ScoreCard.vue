@@ -15,19 +15,20 @@ const volleyOrder = computed(() =>
 <!--  {{gameStore.throwsByPlayer}}-->
   <div class="carte" @click="gameStore.currentVolleyCancel">
 
-    <h2>{{gameStore.currentVolleyTotal}}</h2>
     <div class="volee">
         <span class="carte throw" v-for="i in volleyOrder" :key="i">
           {{gameStore.currentVolley[i] ? gameStore.currentVolley[i] : '-'}}
         </span>
     </div>
+
   </div>
-  <div class="carte submit" @click="gameStore.currentVolleySubmit">
-    ✅
+
+  <div class="submit" @click="gameStore.currentVolleySubmit">
+    <span>✅</span>
+    <h2>{{gameStore.currentVolleyTotal}}</h2>
   </div>
-<!--  <div class="carte" @click="gameStore.currentVolleyCancel">-->
-<!--    🗑️-->
-<!--  </div>-->
+
+
 </template>
 
 <style scoped>
@@ -35,11 +36,16 @@ const volleyOrder = computed(() =>
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
+
+}
+
+.submit span {
+  font-size: 2em;
 }
 
 .throw {
-  width: 20px;
+  min-width: 20px;
+  font-size: 1.5em;
 }
 
 </style>

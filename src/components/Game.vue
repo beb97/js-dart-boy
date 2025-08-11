@@ -18,7 +18,9 @@ const gameStore = useGameStore();
 
 
   <main>
-    <PlayerLine v-for="(player, index) in gameStore.players" :key="player" :index="index"> </PlayerLine>
+    <section>
+      <PlayerLine v-for="(player, index) in gameStore.players" :key="player" :index="index"> </PlayerLine>
+    </section>
 
     <KeyBoard></KeyBoard>
   </main>
@@ -30,6 +32,18 @@ const gameStore = useGameStore();
 main {
   display: flex;
   flex-direction: column;
-  row-gap: 1em;
+  row-gap: 0.5em;
+  justify-content: space-around;
 }
+
+section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+  border: 1px solid grey;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  //background-color: #adb9c6;
+}
+
 </style>
