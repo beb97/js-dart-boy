@@ -25,13 +25,21 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1em;
   min-width: 320px;
   min-height: 100vh;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2.2em;
+  margin: 0;
+  line-height: 1.1;
+}
+h2 {
+  font-size: 2.2em;
+  margin: 0;
   line-height: 1.1;
 }
 
@@ -54,14 +62,45 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.card {
-  padding: 2em;
+.carte {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 0.2em;
+}
+
+.volee {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.volee .carte {
+  border-color: black;
+}
+
+.player {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  row-gap: 1em;
+  column-gap: 1em;
+}
+
+.player__name {
+  /*writing-mode: vertical-rl; !* écriture verticale de droite à gauche *!*/
+  /* ou vertical-lr pour de gauche à droite */
+  /*text-orientation: upright; !* pour que les lettres restent normales (non tournées) *!*/
 }
 
 #app {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1em;
   text-align: center;
 }
 
