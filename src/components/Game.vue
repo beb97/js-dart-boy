@@ -2,7 +2,6 @@
 
 import KeyBoard from "./KeyBoard.vue";
 import PlayerLine from "./PlayerLine.vue";
-import Header from "./Header.vue";
 import {useSettingsStore} from "../stores/SettingsStore.ts";
 import Prompt from "./Prompt.vue";
 
@@ -11,8 +10,6 @@ let settings = useSettingsStore();
 </script>
 
 <template>
-
-
 
   <main>
     <section>
