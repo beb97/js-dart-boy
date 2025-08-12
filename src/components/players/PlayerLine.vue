@@ -40,7 +40,7 @@ const isActive = computed(() => {
   </v-card>
 </template>
 
-<style lang="" scoped>
+<style scoped>
 .v-card {
   border-color: lightblue;
 }
