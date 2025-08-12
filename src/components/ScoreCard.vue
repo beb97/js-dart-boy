@@ -17,7 +17,7 @@ const volleyOrder = computed(() =>
 
 <template>
 <!--  {{gameStore.throwsByPlayer}}-->
-  <div class="carte" @click="currentVolley.cancel()">
+  <div class="" @click="currentVolley.cancel()">
 
     <div class="volee">
         <span class="carte throw" v-for="i in volleyOrder" :key="i">
@@ -48,7 +48,7 @@ const volleyOrder = computed(() =>
 
 .throw {
   min-width: 20px;
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 </style>

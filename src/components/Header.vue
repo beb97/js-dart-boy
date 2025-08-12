@@ -6,7 +6,10 @@ import VolleyCounter from "./VolleyCounter.vue";
 
 <template>
   <header>
+    <router-link :to="{name:'home'}">
+
     <span>🎯</span>
+    </router-link>
     <Chrono/>
     <VolleyCounter/>
     <RouterLink :to="{name:'settings'}">⚙️</RouterLink>

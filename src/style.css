@@ -35,6 +35,10 @@ body {
   min-height: 100vh;
 }
 
+main {
+  max-width: 800px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
@@ -93,9 +97,6 @@ button:focus-visible {
   justify-content: space-between;
 }
 
-.volee .carte {
-  border-color: black;
-}
 
 .player {
   display: flex;

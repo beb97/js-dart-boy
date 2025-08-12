@@ -11,17 +11,17 @@ let settings = useSettingsStore();
 <template>
   <div class="h page">
 
-    <h1>details</h1>
+    <!--    <h1>details</h1>-->
     <div class="navigate">
       <router-link :to="{name:'home'}">
-        <input type="button" value="Retour"/>
+        <input type="button" value="< retour"/>
       </router-link>
     </div>
 
     <div class="v">
       <div class="carte h" v-for="(volleys, index) in mode301.throwsByPlayer">
         <h2>{{ settings.players[index] }}</h2>
-        <div class="carte" v-for="(volley) in volleys">
+        <div class="" v-for="(volley) in volleys">
         <span class="carte" v-for="(dart) in volley">
           {{ dart }}
         </span>

@@ -12,12 +12,14 @@ let settings = useSettingsStore();
 
 <template>
 
-  <Header></Header>
+
 
   <main>
     <section>
       <PlayerLine v-for="(player, index) in settings.players" :key="player" :index="index"> </PlayerLine>
     </section>
+
+<!--    <VuetifyTest></VuetifyTest>-->
 
     <Prompt/>
 

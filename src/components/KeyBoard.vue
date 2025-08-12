@@ -53,12 +53,12 @@ const setMult = (mult: number) => {
   border: 1px solid grey;
   border-radius: 5px;
   padding: 0.5em;
-  background-color: #adb9c6;
+  background-color: #d8e7ec;
 }
 
 .keys {
   display: flex;
-  max-width: 300px;
+  flex: 1;
   flex-wrap: wrap;
   row-gap: 2px;
   column-gap: 2px;
@@ -67,12 +67,13 @@ const setMult = (mult: number) => {
 }
 
 .key {
-  width: 50px;
   font-size: 1.3em;
+  flex: 0 0 calc(100% / 6);
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid grey;
+  box-sizing: border-box;
   box-shadow: #1a1a1a 1px 1px 1px;
 }
 

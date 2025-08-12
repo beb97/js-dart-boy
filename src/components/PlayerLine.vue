@@ -32,7 +32,7 @@ let mode301 = useMode301Store();
       <h2>{{ mode301.remainingScoreByPlayer[index] }}</h2>
     </div>
 
-    <div v-if="gameStore.started" class="carte player" :class="{active_player:(volleys.activePlayerIndex == index)}">
+    <div v-if="gameStore.started" class="player" :class="{active_player:(volleys.activePlayerIndex == index)}">
       <ScoreCard v-if="volleys.activePlayerIndex==index"></ScoreCard>
     </div>
     <div v-if="!gameStore.started" class="carte player">

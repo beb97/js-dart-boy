@@ -24,17 +24,14 @@ function reset() {
     <fieldset>
       <legend>Score</legend>
       <div>
-
         <input type="radio" id="301" value="301" name="score" v-model="settings.initialScore"/>
         <label for="301">301</label>
       </div>
       <div>
-
         <input type="radio" id="501" value="501" name="score" v-model="settings.initialScore"/>
         <label for="501">501</label>
       </div>
       <div>
-
         <input type="radio" id="10" value="10" name="score" v-model="settings.initialScore"/>
         <label for="10">10</label>
       </div>
@@ -47,7 +44,6 @@ function reset() {
       </div>
 
       <div>
-
         <input type="button" value="+" @click="settings.players.push('')"/>
       </div>
 
@@ -65,6 +61,9 @@ function reset() {
 <style scoped>
 
 .settings {
-  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #d8e7ec;
 }
 </style>
