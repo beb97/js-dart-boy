@@ -45,7 +45,7 @@ const setMult = (mult: number) => {
 
 </template>
 
-<style lang="scss" scoped>
+<style lang="" scoped>
 .v-chip {
   margin: 0.2em;
 }
