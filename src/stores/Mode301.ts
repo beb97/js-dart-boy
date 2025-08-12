@@ -42,13 +42,12 @@ export const useMode301Store = defineStore('mode301', () => {
     })
 
     function currentVolleySubmit() {
-        currentVolley.pad();
-
         if(currentVolley.total > currentPlayerScore.value) {
             console.log("score trop grand, volée ignorée")
             currentVolley.cancel();
         }
 
+        currentVolley.pad();
         volleys.addCurrentVolley();
         currentVolley.cancel();
     }
