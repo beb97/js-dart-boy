@@ -2,26 +2,47 @@
 
 import {useGameStore} from "../stores/GameStore.ts";
 import ScoreCard from "./ScoreCard.vue";
+import {router} from "../routes";
+import {useVolleysStore} from "../stores/VolleysStore.ts";
+import {useSettingsStore} from "../stores/SettingsStore.ts";
+import {useMode301Store} from "../stores/Mode301.ts";
 
+function goToDetails() {
+  router.push({ name: 'details' });
+}
 
 defineProps({
   index: Number
 })
 
 const gameStore = useGameStore();
+let volleys = useVolleysStore();
+let settings = useSettingsStore();
+let mode301 = useMode301Store();
 
 </script>
 
 <template>
-<!--  {{ gameStore.remainingScoreByPlayer }}-->
+  <!--  {{ gameStore.remainingScoreByPlayer }}-->
   <div class="player" v-if="index !== undefined">
-    <div class="carte player__name" :class="{active_player:(gameStore.activePlayerIndex == index)}">
-      <h3>{{ gameStore.players[index] }}</h3>
-      <h2>{{ gameStore.remainingScoreByPlayer[index] }}</h2>
+
+    <div class="carte player__name" :class="{active_player:(volleys.activePlayerIndex == index)}"
+    @click="goToDetails">
+      <h3>{{ settings.players[index] }}</h3>
+      <h2>{{ mode301.remainingScoreByPlayer[index] }}</h2>
     </div>
 
-    <div class="carte player" :class="{active_player:(gameStore.activePlayerIndex == index)}">
-      <ScoreCard v-if="gameStore.activePlayerIndex==index"></ScoreCard>
+    <div v-if="gameStore.started" class="carte player" :class="{active_player:(volleys.activePlayerIndex == index)}">
+      <ScoreCard v-if="volleys.activePlayerIndex==index"></ScoreCard>
+    </div>
+    <div v-if="!gameStore.started" class="carte player">
+      <div class="carte player__name"
+           @click="gameStore.startGame"
+           v-if="volleys.activePlayerIndex==index"
+           :class="{active_player:(volleys.activePlayerIndex == index)}">
+        Je commence !
+      </div>
+
     </div>
 
   </div>
@@ -49,7 +70,6 @@ const gameStore = useGameStore();
   border: 3px solid green;
   box-shadow: 0px 0px 10px 5px #65656557;
 }
-
 
 
 </style>

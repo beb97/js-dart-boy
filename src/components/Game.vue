@@ -3,10 +3,10 @@
 import KeyBoard from "./KeyBoard.vue";
 import PlayerLine from "./PlayerLine.vue";
 import Header from "./Header.vue";
-import {useGameStore} from "../stores/GameStore.ts";
-import Settings from "./Settings.vue";
+import {useSettingsStore} from "../stores/SettingsStore.ts";
+import Prompt from "./Prompt.vue";
 
-const gameStore = useGameStore();
+let settings = useSettingsStore();
 
 </script>
 
@@ -14,13 +14,12 @@ const gameStore = useGameStore();
 
   <Header></Header>
 
-  <Settings v-if="gameStore.showSettings"></Settings>
-
-
   <main>
     <section>
-      <PlayerLine v-for="(player, index) in gameStore.players" :key="player" :index="index"> </PlayerLine>
+      <PlayerLine v-for="(player, index) in settings.players" :key="player" :index="index"> </PlayerLine>
     </section>
+
+    <Prompt/>
 
     <KeyBoard></KeyBoard>
   </main>
@@ -43,7 +42,6 @@ section {
   border: 1px solid grey;
   border-radius: 0.5em;
   padding: 0.5em;
-  //background-color: #adb9c6;
 }
 
 </style>
