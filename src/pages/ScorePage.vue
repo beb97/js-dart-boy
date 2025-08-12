@@ -21,8 +21,8 @@ let settings = useSettingsStore();
     <div class="v">
       <div class="carte h" v-for="(volleys, index) in mode301.throwsByPlayer">
         <h2>{{ settings.players[index] }}</h2>
-        <div class="carte" v-for="(volley, index) in volleys">
-        <span class="carte" v-for="(dart, index) in volley">
+        <div class="carte" v-for="(volley) in volleys">
+        <span class="carte" v-for="(dart) in volley">
           {{ dart }}
         </span>
 

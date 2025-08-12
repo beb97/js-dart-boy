@@ -42,7 +42,7 @@ function reset() {
 
     <fieldset>
       <legend>Joueurs</legend>
-      <div v-for="(joueur, index) in settings.players" :key="index">
+      <div v-for="(_, index) in settings.players" :key="index">
         <input v-model="settings.players[index]"><input type="button" value="-" @click="settings.players.pop"/>
       </div>
 
