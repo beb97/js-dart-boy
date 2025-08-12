@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import {computed, ref} from "vue";
+import {computed, ref, watch} from "vue";
 import {useChronoStore} from "./ChronoStore.ts";
 import {useMode301Store} from "./Mode301.ts";
 import {useVolleysStore} from "./VolleysStore.ts";
@@ -9,6 +9,21 @@ import {usePromptStore} from "./PromptStore.ts";
 export const useGameStore = defineStore('game', () => {
 
     const started = ref(false);
+
+    const savedGame = localStorage.getItem('game')
+    if (savedGame) {
+        try {
+            // const parsed = JSON.parse(savedThrows)
+            started.value = JSON.parse(savedGame);
+            console.log('Saved game', savedGame)
+        } catch (e) {
+            console.error('Erreur en chargeant le game:', e)
+        }
+    }
+
+    watch(started, (newVal) => {
+        localStorage.setItem('game', JSON.stringify(newVal))
+    }, {deep: true})
 
     let chronoStore = useChronoStore();
     let mode301 = useMode301Store();
@@ -43,6 +58,7 @@ export const useGameStore = defineStore('game', () => {
         volleys.reset()
         chronoStore.resetChrono()
         started.value = false;
+        prompt.reset();
     }
 
     return {

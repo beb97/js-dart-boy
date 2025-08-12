@@ -11,10 +11,11 @@ let settings = useSettingsStore();
 <template>
   <div class="h page">
 
-    <!--    <h1>details</h1>-->
     <div class="navigate">
       <router-link :to="{name:'home'}">
-        <input type="button" value="< retour"/>
+        <v-btn>
+          < retour
+        </v-btn>
       </router-link>
     </div>
 

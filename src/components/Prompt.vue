@@ -15,19 +15,22 @@ const currentVolley = useCurrentVolleyStore();
 </script>
 
 <template>
-  <section class="prompt" v-if="prompt.hasMessage">
-    {{prompt.message}}
-  </section>
-  <section class="prompt" v-else>
-    <div v-if="currentVolley.volley.length < settings.flecheParVolee">
-      {{ volleys.activePlayer }} fléchette {{currentVolley.volley.length + 1}}
-    </div>
-    <div v-else>
-      <h3 class="submit" @click="gameStore.commitVolley">Valider</h3>
-    </div>
+  <v-card variant="outlined">
+    <v-card-text>
+      <section class="" v-if="prompt.hasMessage">
+        {{prompt.message}}
+      </section>
+      <section class="" v-else>
+        <div v-if="currentVolley.volley.length < settings.flecheParVolee">
+          {{ volleys.activePlayer }} fléchette {{currentVolley.volley.length + 1}}
+        </div>
+        <div v-else>
+          <h3 class="submit" @click="gameStore.commitVolley">Valider</h3>
+        </div>
+      </section>
+    </v-card-text>
 
-
-  </section>
+  </v-card>
 
 </template>
 
