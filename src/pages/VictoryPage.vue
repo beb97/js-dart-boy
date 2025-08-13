@@ -4,8 +4,10 @@ import PlayersStats from "../components/stats/PlayersStats.vue";
 import NewGame from "../components/settings/NewGame.vue";
 import {router} from "../routes";
 import {usePlayersStore} from "../stores/PlayersStore.ts";
+import {usePromptStore} from "../stores/PromptStore.ts";
 
 let playersStore = usePlayersStore();
+let promptStore = usePromptStore();
 
 function goToPlayers() {
   router.push({name: "players"});
@@ -18,7 +20,7 @@ function goToPlayers() {
     <v-card-title class="justify-center">
       <v-btn color="success" class="victory">
 
-      {{ `Victoire de ${playersStore.activePlayer} !!` }}
+      {{ promptStore.message }}
       </v-btn>
     </v-card-title>
   </v-card>
