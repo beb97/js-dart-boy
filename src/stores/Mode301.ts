@@ -29,6 +29,17 @@ export const useMode301Store = defineStore('mode301', () => {
         return result; // tableau 2D [joueur][volée][flèche]
     });
 
+    const remainingScoresByPlayerAndVolley = computed(() => {
+        return throwsByPlayer.value.map(playerVolleys => {
+            let remaining = settings.initialScore;
+            return playerVolleys.map(volley => {
+                const volleyTotal = volley.reduce((sum, t) => sum + t, 0);
+                remaining -= volleyTotal;
+                return remaining;
+            });
+        });
+    });
+
     const totalScoreByPlayer = computed(() => {
         return throwsByPlayer.value.map(playerThrows =>
             playerThrows.flat().reduce((acc, val) => acc + (val || 0), 0)
@@ -62,6 +73,7 @@ export const useMode301Store = defineStore('mode301', () => {
         currentVolleySubmit,
         hasCurrentPlayerWon,
         remainingScoreByPlayer,
+        remainingScoresByPlayerAndVolley,
         throwsByPlayer
     };
 
