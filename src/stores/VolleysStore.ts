@@ -26,14 +26,6 @@ export const useVolleysStore = defineStore('volleys', () => {
     let settings = useSettingsStore();
     let currentVolley = useCurrentVolleyStore();
 
-    const activePlayerIndex = computed(() => {
-        return Math.trunc((throws.value.length / 3) % settings.nbPlayers);
-    })
-
-    const activePlayer = computed(() => {
-        return settings.players[activePlayerIndex.value];
-    })
-
     const dartNumber = computed(() => {
         return throws.value.length + 1;
     })
@@ -51,8 +43,6 @@ export const useVolleysStore = defineStore('volleys', () => {
     }
 
     return {
-        activePlayerIndex,
-        activePlayer,
         reset,
         throws,
         dartNumber,

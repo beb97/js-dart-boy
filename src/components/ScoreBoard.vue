@@ -1,17 +1,13 @@
 <script setup lang="ts">
-
 import PlayerLine from "./players/PlayerLine.vue";
-import {useSettingsStore} from "../stores/SettingsStore.ts";
+import {usePlayersStore} from "../stores/PlayersStore.ts";
 
-let settings = useSettingsStore();
+const playersStore = usePlayersStore();
 </script>
 
 <template>
   <v-card class="" variant="outlined">
-<!--  <div class="players">-->
-
-    <PlayerLine v-for="(player, index) in settings.players" :key="player" :index="index"></PlayerLine>
-<!--  </div>-->
+    <PlayerLine v-for="(player, index) in playersStore.players" :key="player" :index="index"></PlayerLine>
   </v-card>
 </template>
 

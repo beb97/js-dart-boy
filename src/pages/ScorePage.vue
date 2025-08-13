@@ -1,37 +1,35 @@
 <script setup lang="ts">
 import {useMode301Store} from "../stores/Mode301.ts";
-import {useSettingsStore} from "../stores/SettingsStore.ts";
+import {usePlayersStore} from "../stores/PlayersStore.ts";
 
-
-let mode301 = useMode301Store();
-let settings = useSettingsStore();
+const mode301 = useMode301Store();
+const playersStore = usePlayersStore();
 
 </script>
 
 <template>
   <div class="h page">
-
-    <div class="navigate">
       <router-link :to="{name:'home'}">
         <v-btn>
           < retour
         </v-btn>
       </router-link>
-    </div>
 
-    <div class="v">
-      <div class="carte h" v-for="(volleys, index) in mode301.throwsByPlayer">
-        <h2>{{ settings.players[index] }}</h2>
+    <v-card variant="outlined" v-for="(volleys, index) in mode301.throwsByPlayer">
+        <v-card-title>{{ playersStore.players[index] }}</v-card-title>
+      <v-card-text>
         <div class="" v-for="(volley) in volleys">
-        <span class="carte" v-for="(dart) in volley">
+        <v-chip v-for="(dart) in volley">
           {{ dart }}
-        </span>
-
+        </v-chip>
+          <v-chip variant="elevated" color="primary">
+            {{volley.reduce((sum, score) => sum + score, 0)}}
+          </v-chip>
         </div>
-      </div>
-    </div>
-  </div>
+      </v-card-text>
 
+    </v-card>
+  </div>
 </template>
 
 <style scoped>

@@ -23,6 +23,10 @@ export const useCurrentVolleyStore = defineStore('volley', () => {
         return volley.value.reduce((acc, n) => acc + n, 0)
     })
 
+    function remove(index: number) {
+        volley.value.splice(index, 1);
+    }
+
     function cancel() {
         volley.value = [];
     }
@@ -33,6 +37,7 @@ export const useCurrentVolleyStore = defineStore('volley', () => {
         pad,
         total,
         cancel,
+        remove
     };
 
 })

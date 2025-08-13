@@ -14,7 +14,7 @@ const volleyOrder = computed(() =>
 </script>
 
 <template>
-  <v-card variant="outlined" @click="currentVolley.cancel()" v-for="i in volleyOrder" :key="i">
+  <v-card variant="outlined" @click="currentVolley.remove(i)" v-for="i in volleyOrder" :key="i">
       <v-card-title >
           {{ currentVolley.volley[i] ? currentVolley.volley[i] : '--' }}
       </v-card-title>

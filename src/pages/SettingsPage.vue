@@ -5,7 +5,6 @@ import Settings from "../components/settings/Settings.vue";
 
 <template>
   <div class="page h">
-
     <div class="navigate">
       <router-link :to="{name:'home'}">
         <v-btn>
@@ -13,7 +12,6 @@ import Settings from "../components/settings/Settings.vue";
         </v-btn>
       </router-link>
     </div>
-
     <Settings></Settings>
   </div>
 </template>

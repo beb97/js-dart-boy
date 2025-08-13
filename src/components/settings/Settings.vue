@@ -3,7 +3,6 @@ import {useGameStore} from "../../stores/GameStore.ts";
 import {router} from "../../routes";
 import SettingsScore from "./SettingsScore.vue";
 import SettingsPlayers from "./SettingsPlayers.vue";
-import SettingsVolley from "./SettingsVolley.vue";
 
 let gameStore = useGameStore();
 
@@ -17,8 +16,7 @@ function reset() {
   <v-form>
     <v-container>
 
-      <v-card class="mb-4">
-<!--        <v-card-title>Contrôle</v-card-title>-->
+      <v-card class="mb-4" variant="tonal">
         <v-card-text>
           <v-btn @click="reset">
             Nouvelle partie
@@ -28,7 +26,6 @@ function reset() {
 
       <SettingsPlayers/>
       <SettingsScore/>
-      <SettingsVolley />
 
     </v-container>
   </v-form>

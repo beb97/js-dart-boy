@@ -4,6 +4,7 @@ import {useChronoStore} from "./ChronoStore.ts";
 import {useMode301Store} from "./Mode301.ts";
 import {useVolleysStore} from "./VolleysStore.ts";
 import {usePromptStore} from "./PromptStore.ts";
+import {usePlayersStore} from "./PlayersStore.ts";
 
 
 export const useGameStore = defineStore('game', () => {
@@ -29,6 +30,7 @@ export const useGameStore = defineStore('game', () => {
     let mode301 = useMode301Store();
     let volleys = useVolleysStore();
     let prompt = usePromptStore();
+    let players = usePlayersStore();
 
     const startGame = () => {
         resetGame();
@@ -39,7 +41,7 @@ export const useGameStore = defineStore('game', () => {
 
     const commitVolley = () => {
         if(playerHasWon.value) {
-            prompt.message = `Victoire de ${volleys.activePlayer} !!`
+            prompt.message = `Victoire de ${players.activePlayer} !!`
             endGame();
         }
         mode301.currentVolleySubmit();

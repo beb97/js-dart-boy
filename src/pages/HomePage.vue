@@ -1,15 +1,14 @@
 <script setup lang="ts">
 
 import Game from "../components/Game.vue";
-import {useSettingsStore} from "../stores/SettingsStore.ts";
 import {router} from "../routes";
+import {usePlayersStore} from "../stores/PlayersStore.ts";
 
-let settingsStore = useSettingsStore();
+const playersStore = usePlayersStore();
 
-if(settingsStore.players.length == 0){
+if(playersStore.nbPlayers == 0){
 router.push({name:"players"});
 }
-
 
 </script>
 

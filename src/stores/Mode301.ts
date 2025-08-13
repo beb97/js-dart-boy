@@ -3,19 +3,21 @@ import {useVolleysStore} from "./VolleysStore.ts";
 import {computed} from "vue";
 import {useSettingsStore} from "./SettingsStore.ts";
 import {useCurrentVolleyStore} from "./CurrentVolley.ts";
+import {usePlayersStore} from "./PlayersStore.ts";
 
 
 export const useMode301Store = defineStore('mode301', () => {
 
    let volleys = useVolleysStore();
    let currentVolley = useCurrentVolleyStore();
+   let players = usePlayersStore();
    let settings = useSettingsStore();
 
 
     const throwsByPlayer = computed(() => {
         const result = [];
 
-        for (let playerIndex = 0; playerIndex < settings.nbPlayers; playerIndex++) {
+        for (let playerIndex = 0; playerIndex < players.nbPlayers; playerIndex++) {
             const playerThrows = [];
 
             for (let i = playerIndex * settings.flecheParVolee; i < volleys.throws.length; i += settings.throwsPerRound) {
@@ -38,7 +40,7 @@ export const useMode301Store = defineStore('mode301', () => {
     });
 
     const currentPlayerScore = computed(() => {
-        return remainingScoreByPlayer.value[volleys.activePlayerIndex];
+        return remainingScoreByPlayer.value[players.activePlayerIndex];
     })
 
     function currentVolleySubmit() {
@@ -53,7 +55,7 @@ export const useMode301Store = defineStore('mode301', () => {
     }
 
     const hasCurrentPlayerWon = computed(() => {
-        return remainingScoreByPlayer.value[volleys.activePlayerIndex] == currentVolley.total;
+        return remainingScoreByPlayer.value[players.activePlayerIndex] == currentVolley.total;
     })
 
     return {

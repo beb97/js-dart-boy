@@ -2,25 +2,25 @@
 
 import {useGameStore} from "../../stores/GameStore.ts";
 import ScoreCard from "./ScoreCard.vue";
-import {useVolleysStore} from "../../stores/VolleysStore.ts";
 import PlayerTag from "./PlayerTag.vue";
 import PlayerStart from "./PlayerStart.vue";
 import PlayerCommit from "./PlayerCommit.vue";
 import {computed} from "vue";
 import PlayerCancel from "./PlayerCancel.vue";
+import {usePlayersStore} from "../../stores/PlayersStore.ts";
 
 
 const {index} = defineProps({
   index: Number
 })
 
-let volleys = useVolleysStore();
-let gameStore = useGameStore();
+const playersStore = usePlayersStore();
+const gameStore = useGameStore();
 
 const isActive = computed(() => {
   if (index == undefined) return false;
   if (!gameStore.started) return false;
-  return volleys.activePlayerIndex == index;
+  return playersStore.activePlayerIndex == index;
 })
 
 </script>

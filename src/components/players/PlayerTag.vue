@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import {useVolleysStore} from "../../stores/VolleysStore.ts";
-import {useSettingsStore} from "../../stores/SettingsStore.ts";
 import {useMode301Store} from "../../stores/Mode301.ts";
 import {router} from "../../routes";
 import {computed} from "vue";
+import {usePlayersStore} from "../../stores/PlayersStore.ts";
 
-let volleys = useVolleysStore();
-let settings = useSettingsStore();
-let mode301 = useMode301Store();
+const playersStore = usePlayersStore();
+const mode301 = useMode301Store();
 
 const {index} = defineProps({
   index: Number
@@ -19,7 +17,7 @@ function goToDetails() {
 
 const variant = computed(() => {
   if (index == undefined) return "outlined"
-  return (volleys.activePlayerIndex == index) ? "tonal":"outlined";
+  return (playersStore.activePlayerIndex == index) ? "tonal":"outlined";
 })
 
 </script>
@@ -32,7 +30,7 @@ const variant = computed(() => {
         v-if="index !== undefined"
           @click="goToDetails">
     <v-card-title>{{ mode301.remainingScoreByPlayer[index] }}</v-card-title>
-    <v-card-text>{{ settings.players[index] }}</v-card-text>
+    <v-card-text>{{ playersStore.players[index] }}</v-card-text>
   </v-card>
 </template>
 

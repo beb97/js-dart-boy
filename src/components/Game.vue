@@ -19,6 +19,7 @@ import ScoreBoard from "./ScoreBoard.vue";
 <style scoped>
 
 main {
+  margin-top: 0.5em;
   max-width: 600px;
   display: flex;
   flex-direction: column;

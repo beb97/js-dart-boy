@@ -6,7 +6,7 @@ let settings = useSettingsStore();
 
 <template>
 
-  <v-card class="mb-4">
+  <v-card variant="outlined">
     <v-card-title>Scores</v-card-title>
     <v-card-text>
       <v-radio-group v-model="settings.initialScore">
