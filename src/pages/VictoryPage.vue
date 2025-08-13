@@ -1,9 +1,11 @@
 <script setup lang="ts">
 
 import PlayersStats from "../components/stats/PlayersStats.vue";
-import Prompt from "../components/Prompt.vue";
 import NewGame from "../components/settings/NewGame.vue";
 import {router} from "../routes";
+import {usePlayersStore} from "../stores/PlayersStore.ts";
+
+let playersStore = usePlayersStore();
 
 function goToPlayers() {
   router.push({name: "players"});
@@ -12,7 +14,14 @@ function goToPlayers() {
 </script>
 
 <template>
-  <Prompt/>
+  <v-card variant="outlined">
+    <v-card-title class="justify-center">
+      <v-btn color="success" class="victory">
+
+      {{ `Victoire de ${playersStore.activePlayer} !!` }}
+      </v-btn>
+    </v-card-title>
+  </v-card>
   <NewGame/>
   <v-card variant="outlined">
     <v-card-text>
@@ -23,5 +32,22 @@ function goToPlayers() {
 </template>
 
 <style scoped>
+.victory {
+  animation: pulse 1.5s infinite;
+}
 
+@keyframes pulse {
+  0% {
+    transform: scale(1) rotate(-2deg);
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+  }
+  30% {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 20px 10px rgba(76, 175, 80, 0);
+  }
+  100% {
+    transform: scale(1) rotate(-5deg);
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
 </style>
