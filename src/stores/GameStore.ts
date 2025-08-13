@@ -5,6 +5,7 @@ import {useMode301Store} from "./Mode301.ts";
 import {useVolleysStore} from "./VolleysStore.ts";
 import {usePromptStore} from "./PromptStore.ts";
 import {usePlayersStore} from "./PlayersStore.ts";
+import {router} from "../routes";
 
 
 export const useGameStore = defineStore('game', () => {
@@ -43,6 +44,7 @@ export const useGameStore = defineStore('game', () => {
         if(playerHasWon.value) {
             prompt.message = `Victoire de ${players.activePlayer} !!`
             endGame();
+            router.push({name:'victory'});
         }
         mode301.currentVolleySubmit();
     }

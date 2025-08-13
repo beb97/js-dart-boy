@@ -19,7 +19,8 @@ const {index} = defineProps({
 
 <template>
   <v-card variant="outlined" v-if="index!=undefined" @click="startWithMe(index)">
-    <v-card-title >{{ index+1 }}</v-card-title>
+<!--    <v-card-title >{{ index+1 }}</v-card-title>-->
+
     <v-card-text>
       Je commence !
     </v-card-text>

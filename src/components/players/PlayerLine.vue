@@ -6,7 +6,6 @@ import PlayerTag from "./PlayerTag.vue";
 import PlayerStart from "./PlayerStart.vue";
 import PlayerCommit from "./PlayerCommit.vue";
 import {computed} from "vue";
-import PlayerCancel from "./PlayerCancel.vue";
 import {usePlayersStore} from "../../stores/PlayersStore.ts";
 
 
@@ -30,7 +29,7 @@ const isActive = computed(() => {
     <v-container>
       <v-row justify="space-between">
         <PlayerTag :index="index"/>
-        <PlayerCancel v-if="isActive"/>
+<!--        <PlayerCancel v-if="isActive"/>-->
         <ScoreCard v-if="isActive"/>
         <PlayerStart v-if="!gameStore.started" :index="index"/>
         <PlayerCommit v-if="isActive"/>

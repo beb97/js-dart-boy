@@ -6,7 +6,7 @@ let currentVolley = useCurrentVolleyStore();
 </script>
 
 <template>
-  <v-card variant="tonal" @click="currentVolley.cancel"
+  <v-card :variant="(currentVolley.total>0)?'tonal':'plain'" @click="currentVolley.cancel"
           color="warning"
   >
     <v-card-title class="headline">x</v-card-title>

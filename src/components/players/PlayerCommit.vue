@@ -8,10 +8,10 @@ let currentVolley = useCurrentVolleyStore();
 </script>
 
 <template>
-  <v-card variant="tonal" @click="gameStore.commitVolley"
+  <v-card :variant=" (currentVolley.total>0)?'elevated': 'plain'" @click="gameStore.commitVolley"
           color="success"
   >
-    <v-card-title>{{ currentVolley.total }}</v-card-title>
+    <v-card-title class="text-h4">{{ currentVolley.total }}</v-card-title>
     <v-card-text>
       ✅
     </v-card-text>
@@ -19,5 +19,11 @@ let currentVolley = useCurrentVolleyStore();
 </template>
 
 <style scoped>
+.v-card-title {
+  padding: 0 0.3em;
+}
 
+.v-card-text {
+  padding: 0 0.3em;
+}
 </style>

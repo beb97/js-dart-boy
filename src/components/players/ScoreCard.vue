@@ -14,11 +14,16 @@ const volleyOrder = computed(() =>
 </script>
 
 <template>
-  <v-card variant="outlined" @click="currentVolley.remove(i)" v-for="i in volleyOrder" :key="i">
-      <v-card-title >
+  <v-card :variant="(currentVolley.volley[i]>0)?'tonal':(i == currentVolley.volley.length)?'flat':'text'"
+          color="primary"
+          @click="currentVolley.remove(i)" v-for="i in volleyOrder" :key="i">
+      <v-card-title class="text-h5">
           {{ currentVolley.volley[i] ? currentVolley.volley[i] : '--' }}
       </v-card-title>
-      <v-card-text>🎯</v-card-text>
+      <v-card-text>
+        {{ (currentVolley.volley[i] >0) ? "🗑️": "🎯" }}
+
+      </v-card-text>
   </v-card>
 </template>
 

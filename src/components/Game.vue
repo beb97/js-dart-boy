@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 import KeyBoard from "./KeyBoard.vue";
-import Prompt from "./Prompt.vue";
 import ScoreBoard from "./ScoreBoard.vue";
 
 </script>
@@ -10,8 +9,9 @@ import ScoreBoard from "./ScoreBoard.vue";
 
   <main>
     <ScoreBoard/>
-    <Prompt/>
+<!--    <Prompt/>-->
     <KeyBoard/>
+
   </main>
 
 </template>
