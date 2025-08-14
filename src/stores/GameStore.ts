@@ -43,10 +43,13 @@ export const useGameStore = defineStore('game', () => {
     const commitVolley = () => {
         if(playerHasWon.value) {
             prompt.message = `Victoire de ${players.activePlayer} !!`
+            console.log(prompt.message);
+            mode301.currentVolleySubmit();
             endGame();
             router.push({name:'victory'});
+        } else {
+            mode301.currentVolleySubmit();
         }
-        mode301.currentVolleySubmit();
     }
 
     const endGame = () => {
