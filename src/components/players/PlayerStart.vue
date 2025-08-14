@@ -6,7 +6,8 @@ const gameStore = useGameStore();
 const playersStore = usePlayersStore();
 
 function startWithMe(index:number) {
-  playersStore.startByIndex(index);
+  console.log('startIndex', index);
+  playersStore.setStartingPlayer(playersStore.players[index]);
   gameStore.startGame();
 }
 
@@ -19,8 +20,6 @@ const {index} = defineProps({
 
 <template>
   <v-card variant="outlined" v-if="index!=undefined" @click="startWithMe(index)">
-<!--    <v-card-title >{{ index+1 }}</v-card-title>-->
-
     <v-card-text>
       Je commence !
     </v-card-text>

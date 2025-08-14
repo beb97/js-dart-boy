@@ -3,6 +3,7 @@
 import SettingsPlayers from "../components/settings/SettingsPlayers.vue";
 import {router} from "../routes";
 import {usePlayersStore} from "../stores/PlayersStore.ts";
+import SettingsMode from "../components/settings/SettingsMode.vue";
 
 let playersStore = usePlayersStore();
 
@@ -13,7 +14,8 @@ function letsgo() {
 
 <template>
 <SettingsPlayers></SettingsPlayers>
-  <v-card>
+  <SettingsMode></SettingsMode>
+  <v-card variant="outlined">
     <v-card-title>
       <v-btn color="primary" @click="letsgo" :disabled="playersStore.nbPlayers < 1">C'est parti</v-btn>
     </v-card-title>

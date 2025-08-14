@@ -1,12 +1,13 @@
 import {defineStore} from "pinia";
 import {computed, ref, watch} from "vue";
 import {useVolleysStore} from "./VolleysStore.ts";
+import {useSettingsStore} from "./SettingsStore.ts";
 
 export const usePlayersStore = defineStore('players', () => {
 
-    // const players = ref<string[]>([]);
     const allPlayers = ref<Player[]>([]);
     let volleys = useVolleysStore();
+    let settingsStore = useSettingsStore();
 
     interface Player {
         name: string
@@ -16,14 +17,13 @@ export const usePlayersStore = defineStore('players', () => {
     const savedPlayers = localStorage.getItem('players')
     if (savedPlayers) {
         try {
-            allPlayers.value = JSON.parse(savedPlayers);
+            allPlayers.value = JSON.parse(savedPlayers)
         } catch (e) {
-            console.error('Erreur en chargeant joueurs:', e)
+            console.error('Erreur en chargeant les joueurs:', e)
         }
     }
-
-    watch(allPlayers, (newVal) => {
-        localStorage.setItem('players', JSON.stringify(newVal))
+    watch(allPlayers, (newPlayers) => {
+        localStorage.setItem('players', JSON.stringify(newPlayers))
     }, { deep: true })
 
     const players = computed(() => {
@@ -54,8 +54,16 @@ export const usePlayersStore = defineStore('players', () => {
     })
 
     const activePlayerIndex = computed(():number => {
-        return Math.trunc((volleys.throws.length / 3) % nbPlayers.value);
+        return Math.trunc(( (volleys.throws.length / settingsStore.flecheParVolee)) % nbPlayers.value);
     })
+
+    const setStartingPlayer = (nom:string): void => {
+        const index = allPlayers.value.findIndex(j => j.name === nom);
+        if (index > 0) {
+            const tmp = allPlayers.value.splice(index, 1)[0];
+            allPlayers.value.unshift(tmp);
+        }
+    }
 
     const activePlayer = computed(() => {
         return players.value[activePlayerIndex.value];
@@ -73,6 +81,7 @@ export const usePlayersStore = defineStore('players', () => {
         togglePlayer,
         addPlayer,
         removePlayer,
+        setStartingPlayer,
         deletePlayer,
         nbPlayers,
         allPlayers,

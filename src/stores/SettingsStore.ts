@@ -6,19 +6,22 @@ export const useSettingsStore = defineStore('settings', () => {
 
     let players = usePlayersStore();
 
-    const initialScore = ref(301);
+    const mode = ref("501");
+    const initialScore = computed(() => {
+        return Number(mode.value);
+    })
     const flecheParVolee = ref(3);
 
     const savedSettings = localStorage.getItem('settings')
     if (savedSettings) {
         try {
-            initialScore.value = JSON.parse(savedSettings);
+            mode.value = JSON.parse(savedSettings);
         } catch (e) {
             console.error('Erreur en chargeant settings:', e)
         }
     }
 
-    watch(initialScore, (newVal) => {
+    watch(mode, (newVal) => {
         localStorage.setItem('settings', JSON.stringify(newVal))
     }, { deep: true })
 
@@ -28,6 +31,7 @@ export const useSettingsStore = defineStore('settings', () => {
     })
 
     return {
+        mode,
         throwsPerRound,
         initialScore,
         flecheParVolee,
