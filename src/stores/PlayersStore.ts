@@ -69,12 +69,6 @@ export const usePlayersStore = defineStore('players', () => {
         return players.value[activePlayerIndex.value];
     })
 
-    function startByIndex(index:number) {
-        const [me] = allPlayers.value.splice(index, 1);
-        allPlayers.value.unshift(me);
-    }
-
-
     return {
         activePlayerIndex,
         activePlayer,
@@ -86,6 +80,5 @@ export const usePlayersStore = defineStore('players', () => {
         nbPlayers,
         allPlayers,
         players,
-        startByIndex
     };
 })
