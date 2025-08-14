@@ -3,10 +3,8 @@
 import PlayersStats from "../components/stats/PlayersStats.vue";
 import NewGame from "../components/settings/NewGame.vue";
 import {router} from "../routes";
-import {usePlayersStore} from "../stores/PlayersStore.ts";
 import {usePromptStore} from "../stores/PromptStore.ts";
 
-let playersStore = usePlayersStore();
 let promptStore = usePromptStore();
 
 function goToPlayers() {
